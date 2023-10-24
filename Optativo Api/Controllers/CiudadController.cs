@@ -36,10 +36,12 @@ public class CiudadController : ControllerBase {
     //Agregar ciudad
 
     [HttpPost]
+   /*/
     public IActionResult InsertarCiudadAccion([FromBody] Infraestructura.Modelos.CiudadModel ciudad) {
         servicio.insertarCiudad(ciudad);
         return Created("Se creo con exito", ciudad);
     }
+    /*/
     
     //Modificar ciudad
     

@@ -22,6 +22,7 @@ public class PersonaController : Controller {
     }
     //
     
+    
     //Mostra porsona por documento
     //
     [HttpGet("{id}")]
@@ -31,8 +32,9 @@ public class PersonaController : Controller {
     }
     //
     
-    //Insertar ciudad por documento - Basico
-    //
+    
+    //Insertar persona - Basico
+    /*/
     [HttpPost("RegistrarPersonaBasico")]
     public IActionResult RegistrarPersonaBasico([FromBody] Models.PersonaModel modelo)
     {
@@ -53,7 +55,7 @@ public class PersonaController : Controller {
             });
         return Ok("Los datos de persona fueron insertados correctamente");
     } 
-    //
+    /*/
     
     //Modificar PERSONA
     //
@@ -70,12 +72,13 @@ public class PersonaController : Controller {
     }
     //
     
+    
     //Eliminar Persona
-    /*/
+    //
     [HttpDelete("{id}")]
     public IActionResult EliminarPersona(int id)
     {
         return Ok(personaServicio.EliminarPersona(id));
     }
-    /*/
+    //
 }

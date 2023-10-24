@@ -32,7 +32,7 @@ public class ClienteController : Controller
     }
     //
     
-    //Insertar ciudad por documento - Basico
+    //Insertar ciudad - Basico
     /*/
     [HttpPost("RegistrarPersonaBasico")]
     public IActionResult RegistrarClienteBasico([FromBody] Models.ClienteModel modelo)
