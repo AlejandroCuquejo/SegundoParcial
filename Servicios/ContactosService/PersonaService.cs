@@ -21,20 +21,20 @@ public class PersonaService
         return personaDatos.obtenerPersonaPorId(id);
     }
 
-    public void registrarPersona(PersonaModel persona)
+    public void RegistrarPersona(PersonaModel persona)
     {
         validarDatos(persona);
-        personaDatos.insertarPersona(persona);
+        personaDatos.RegistrarPersona(persona);
     }
     
-    public void modificarPersona(PersonaModel persona)
+    public void modificarPersonaPorId(PersonaModel persona)
     {
         validarDatos(persona);
-        personaDatos.modificarPersona(persona);
+        personaDatos.modificarPersonaPorId(persona);
     }  
     
-    public CiudadModel EliminarPersona(int id) {
-        return personaDatos.EliminarPersnaPorId(id);
+    public CiudadModel EliminarPersonaPorId(int id) {
+        return personaDatos.EliminarPersonaPorId(id);
     }
     
     private void validarDatos(PersonaModel persona)

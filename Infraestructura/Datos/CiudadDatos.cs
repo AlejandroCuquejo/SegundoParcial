@@ -14,7 +14,7 @@ namespace Infraestructura.Datos
             conexion = new ConexionDB(cadenaConexion);
         }
 
-        public void insertarCiudad(CiudadModel ciudad)
+        public void RegistrarCiudad(CiudadModel ciudad)
         {
             var conn = conexion.GetConexion();
             var comando = new Npgsql.NpgsqlCommand("INSERT INTO ciudad(id_ciudad, ciudad, departamento, postal_code)" +
@@ -52,7 +52,7 @@ namespace Infraestructura.Datos
         public CiudadModel obtenerCiudadPorId(int id)
         {
             var conn = conexion.GetConexion();
-            var comando = new Npgsql.NpgsqlCommand($"Select * from ciudad where id_ciudad = {id}", conn);
+            var comando = new Npgsql.NpgsqlCommand($"SELECT * FROM ciudad WHERE id_ciudad = {id}", conn);
             using var reader = comando.ExecuteReader();
             if (reader.Read())
             {
@@ -67,7 +67,7 @@ namespace Infraestructura.Datos
             return null;
         }
         
-        public void modificarCiudad(CiudadModel ciudad) {
+        public void modificarCiudadPorID(CiudadModel ciudad) {
             var conn = conexion.GetConexion();
             var comando = new Npgsql.NpgsqlCommand($"UPDATE ciudad " +
                                                    $"SET ciudad = '{ciudad.ciudad}', " +

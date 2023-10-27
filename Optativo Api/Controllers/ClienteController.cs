@@ -4,7 +4,7 @@ using Servicios.ContactosService;
 
 namespace Optativo_Api.Controllers;
 [ApiController]
-[Route("cliente/[controller]")]
+[Route("[controller]")]
 
 public class ClienteController : Controller
 {
@@ -17,27 +17,27 @@ public class ClienteController : Controller
     
     //Mostra porsona por ID
     //
-    [HttpGet()]
-    public IActionResult Get()
+    [HttpGet("obtenerTodosLosClientes")]
+    public IActionResult obtenerTodosLosClientes()
     {
         return Ok(clienteServicio.obtenerTodosLosClientes());
     }
     
     //    //Mostra porsona por ID
     //
-    [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    [HttpGet("obtenerClientePorId{id}")]
+    public IActionResult obtenerClientePorId(int id)
     {
-        return Ok(clienteServicio.obtenerCliente(id));
+        return Ok(clienteServicio.obtenerClientePorId(id));
     }
     //
     
     //Insertar ciudad - Basico
-    /*/
-    [HttpPost("RegistrarPersonaBasico")]
-    public IActionResult RegistrarClienteBasico([FromBody] Models.ClienteModel modelo)
+    //
+    [HttpPost("RegistrarCliente")]
+    public IActionResult RegistrarCliente([FromBody] Models.ClienteModels modelo)
     {
-        clienteServicio.RegistrarClienteBasico(
+        clienteServicio.RegistrarCliente(
             new Infraestructura.Modelos.ClienteModel()
             {
                 fecha_ingreso = modelo.fecha_ingreso,
@@ -50,14 +50,14 @@ public class ClienteController : Controller
             });
         return Ok("Los datos de persona fueron insertados correctamente");
     }
-    /*/
+    //
     
     //Modificar cliente
     //
-    [HttpPut]
-    public IActionResult ModificarCiudadAccion([FromBody] Infraestructura.Modelos.ClienteModel modelo) {
+    [HttpPut("modificarClientePorId")]
+    public IActionResult modificarClientePorId([FromBody] Infraestructura.Modelos.ClienteModel modelo) {
         try {
-            clienteServicio.modificarCliente(modelo);
+            clienteServicio.modificarClientePorId(modelo);
         }
         catch (Exception ex) {
             return BadRequest(ex.Message);
@@ -69,10 +69,10 @@ public class ClienteController : Controller
     
     //Eliminar cliente
     //
-    [HttpDelete("{id}")]
-    public IActionResult EliminarPersona(int id)
+    [HttpDelete("EliminarClientePorId{id}")]
+    public IActionResult EliminarClientePorId(int id)
     {
-        return Ok(clienteServicio.EliminarCliente(id));
+        return Ok(clienteServicio.EliminarClientePorId(id));
     }
     //
 }

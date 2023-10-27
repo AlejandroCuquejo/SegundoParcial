@@ -11,9 +11,9 @@ public class CiudadService {
         ciudadDatos = new CiudadDatos(cadenaConexion);
     }
 
-    public void insertarCiudad(CiudadModel ciudad) {
+    public void RegistrarCiudad(CiudadModel ciudad) {
         validarDatos(ciudad);
-        ciudadDatos.insertarCiudad(ciudad);
+        ciudadDatos.RegistrarCiudad(ciudad);
     }
     
     public List<CiudadModel> obtenerTodasLasCiudad()
@@ -22,15 +22,15 @@ public class CiudadService {
     }
 
     
-    public CiudadModel obtenerCiudad(int id)
+    public CiudadModel obtenerCiudadPorId(int id)
     {
         return ciudadDatos.obtenerCiudadPorId(id);
     }
 
-    public void modificarCiudad(CiudadModel ciudad)
+    public void modificarCiudadPorID(CiudadModel ciudad)
     {
         validarDatos(ciudad);
-        ciudadDatos.modificarCiudad(ciudad);
+        ciudadDatos.modificarCiudadPorID(ciudad);
     }  
     
     public CiudadModel EliminarCiudadPorId(int id) {
@@ -47,9 +47,6 @@ public class CiudadService {
         {
             throw new Exception("El campo departamento no puede ser nulo");
         }   
-        if(ciudad.postal_code < 2 )
-        {
-            throw new Exception("El campo postal_code no puede ser nulo");
-        }
+
     }
 }

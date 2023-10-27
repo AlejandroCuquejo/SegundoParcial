@@ -1,6 +1,6 @@
 namespace Optativo_Api.Models;
 
-public class CuentasModel
+public class CuentasModels
 {
     public int id_cuentas { get; set; }
     public int id_cliente { get; set; }

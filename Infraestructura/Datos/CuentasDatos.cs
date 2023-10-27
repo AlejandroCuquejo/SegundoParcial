@@ -11,7 +11,7 @@ public class CuentasDatos {
         conexion = new ConexionDB(cadenaConexion);
     }
     
-    public void RegistrarClienteBasico(CuentasModel cuentas)
+    public void RegistrarCuentas(CuentasModel cuentas)
     {
         var conn = conexion.GetConexion();
         var comando = new Npgsql.NpgsqlCommand("INSERT INTO cuentas( id_cliente,nro_cuenta, fecha_alta, tipo_cuenta ,estado,saldo,nro_contrato,costo_mantenimiento,promedio_acreditacion,moneda)" +
@@ -98,23 +98,8 @@ public class CuentasDatos {
         return null;
     }
     
-    public void modificarCuent2a(CuentasModel cuentas) {
-        var conn = conexion.GetConexion();
-        var comando = new Npgsql.NpgsqlCommand($"UPDATE cuentas SET id_cliente = '{cuentas.cliente.id_cliente}', " +
-                                               $"nro_cuenta = '{cuentas.nro_cuenta}', " +
-                                               $"fecha_alta = '{cuentas.fecha_alta}', " +
-                                               $"tipo_cuenta = '{cuentas.tipo_cuenta}', " +
-                                               $"estado = '{cuentas.estado}', " +
-                                               $"saldo = '{cuentas.saldo}', " +
-                                               $"nro_contrato = '{cuentas.nro_contrato}', " +
-                                               $"costo_mantenimiento = '{cuentas.costo_mantenimiento}', " +
-                                               $"promedio_acreditacion = '{cuentas.promedio_acreditacion}', " +
-                                               $"moneda = '{cuentas.moneda}' " +
-                                               $" WHERE id_cuentas = {cuentas.id_cuentas}", conn);
-        comando.ExecuteNonQuery();
-    }
     
-    public void modificarCuenta(CuentasModel cuentas) {
+    public void modificarCuentasPorId(CuentasModel cuentas) {
         var conn = conexion.GetConexion();
         var comando = new Npgsql.NpgsqlCommand($"UPDATE cuentas SET " +
                                                $"id_cliente = '{cuentas.cliente.id_cliente}', " +

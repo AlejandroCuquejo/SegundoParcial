@@ -15,7 +15,7 @@ public class PersonaController : Controller {
     
     //Mostra todas las porsona
     //
-    [HttpGet]
+    [HttpGet("obtenerTodasLasPersona")]
     public IActionResult obtenerTodasLasPersona()
     {
         return Ok(personaServicio.obtenerTodasLasPersona());
@@ -25,8 +25,8 @@ public class PersonaController : Controller {
     
     //Mostra porsona por documento
     //
-    [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    [HttpGet("obtenerPersonaPorId{id}")]
+    public IActionResult obtenerPersonaPorId(int id)
     {
         return Ok(personaServicio.obtenerPersonaPorId(id));
     }
@@ -34,11 +34,11 @@ public class PersonaController : Controller {
     
     
     //Insertar persona - Basico
-    /*/
-    [HttpPost("RegistrarPersonaBasico")]
-    public IActionResult RegistrarPersonaBasico([FromBody] Models.PersonaModel modelo)
+    //
+    [HttpPost("RegistrarPersona")]
+    public IActionResult RegistrarPersona([FromBody] Models.PersonaModels modelo)
     {
-        personaServicio.registrarPersona(
+        personaServicio.RegistrarPersona(
             new Infraestructura.Modelos.PersonaModel
             {
                 nombre = modelo.nombre,
@@ -55,14 +55,14 @@ public class PersonaController : Controller {
             });
         return Ok("Los datos de persona fueron insertados correctamente");
     } 
-    /*/
+    //
     
     //Modificar PERSONA
     //
-    [HttpPut]
-    public IActionResult ModificarCiudadAccion([FromBody] Infraestructura.Modelos.PersonaModel modelo) {
+    [HttpPut("modificarPersonaPorId")]
+    public IActionResult modificarPersonaPorId([FromBody] Infraestructura.Modelos.PersonaModel modelo) {
         try {
-            personaServicio.modificarPersona(modelo);
+            personaServicio.modificarPersonaPorId(modelo);
         }
         catch (Exception ex) {
             return BadRequest(ex.Message);
@@ -75,10 +75,10 @@ public class PersonaController : Controller {
     
     //Eliminar Persona
     //
-    [HttpDelete("{id}")]
-    public IActionResult EliminarPersona(int id)
+    [HttpDelete("EliminarPersonaPorId{id}")]
+    public IActionResult EliminarPersonaPorId(int id)
     {
-        return Ok(personaServicio.EliminarPersona(id));
+        return Ok(personaServicio.EliminarPersonaPorId(id));
     }
     //
 }

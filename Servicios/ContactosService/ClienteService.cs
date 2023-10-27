@@ -16,21 +16,21 @@ public class ClienteService {
         return clienteDatos.obtenerTodosLosClientes();
     }
     
-    public void RegistrarClienteBasico(ClienteModel cliente) {
+    public void RegistrarCliente(ClienteModel cliente) {
         validarDatos(cliente);
-        clienteDatos.insertarCliente(cliente);
+        clienteDatos.RegistrarCliente(cliente);
     }
     
-    public ClienteModel obtenerCliente(int id) {
+    public ClienteModel obtenerClientePorId(int id) {
         return clienteDatos.obtenerClientePorId(id);
     }
 
-    public void modificarCliente(ClienteModel cliente) {
+    public void modificarClientePorId(ClienteModel cliente) {
         validarDatos(cliente);
-        clienteDatos.modificarCliente(cliente);
+        clienteDatos.modificarClientePorId(cliente);
     } 
     
-    public ClienteModel EliminarCliente(int id) {
+    public ClienteModel EliminarClientePorId(int id) {
         return clienteDatos.EliminarClientePorId(id);
     }
     

@@ -11,7 +11,7 @@ public class ClienteDatos {
         conexion = new ConexionDB(cadenaConexion);
     }
     
-    public void insertarCliente(ClienteModel cliente) {
+    public void RegistrarCliente(ClienteModel cliente) {
         var conn = conexion.GetConexion();
         var comando = new Npgsql.NpgsqlCommand("INSERT INTO cliente( id_persona, fecha_ingreso, calificacion,estado)" +
                                                "VALUES(@id_persona, @fecha_ingreso, @calificacion, @estado)", conn);
@@ -104,7 +104,7 @@ public class ClienteDatos {
         return null;
     }
     
-    public void modificarCliente(ClienteModel cliente) {
+    public void modificarClientePorId(ClienteModel cliente) {
         var conn = conexion.GetConexion();
         var comando = new Npgsql.NpgsqlCommand($"UPDATE cliente SET id_persona = '{cliente.persona.id_persona}', " +
                                                $"fecha_ingreso = '{cliente.fecha_ingreso}', " +

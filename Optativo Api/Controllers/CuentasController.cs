@@ -3,7 +3,7 @@ using Servicios.ContactosService;
 
 namespace Optativo_Api.Controllers;
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 
 public class CuentasController : Controller
 {
@@ -16,30 +16,30 @@ public class CuentasController : Controller
     
     //Mostra todos las cuentas
     //
-    [HttpGet()]
-    public IActionResult Get()
+    [HttpGet("obtenerTodasLasCuentas")]
+    public IActionResult obtenerTodasLasCuentas()
     {
         return Ok(cuentasService.obtenerTodasLasCuentas());
     }
     //
     
     
-    //Mostra cliente por ID
+    //Mostra cuentas por ID
     //
-    [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    [HttpGet("obtenerCuentasPorId{id}")]
+    public IActionResult obtenerCuentasPorId(int id)
     {
         return Ok(cuentasService.obtenerCuentasPorId(id));
     }
     //
     
     
-    //Insertar ciudad  - Basico
-    /*/
-    [HttpPost("RegistrarClienteBasico")]
-    public IActionResult RegistrarClienteBasico([FromBody] Models.CuentasModel modelo)
+    //Registrar Cuentas
+    //
+    [HttpPost("RegistrarCuentas")]
+    public IActionResult RegistrarCuentas([FromBody] Models.CuentasModels modelo)
     {
-        cuentasService.RegistrarClienteBasico(
+        cuentasService.RegistrarCuentas(
             new Infraestructura.Modelos.CuentasModel()
             {
                 nro_cuenta = modelo.nro_cuenta,
@@ -58,15 +58,15 @@ public class CuentasController : Controller
             });
         return Ok("Los datos de persona fueron insertados correctamente");
     }
-    /*/
-    
-    
-    //modificar cuenta
     //
-    [HttpPut]
-    public IActionResult modificarCuenta([FromBody]  Infraestructura.Modelos.CuentasModel modelo) {
+    
+    
+    //modificar cuentas
+    //
+    [HttpPut("modificarCuentasPorId")]
+    public IActionResult modificarCuentasPorId([FromBody]  Infraestructura.Modelos.CuentasModel modelo) {
         try {
-            cuentasService.modificarCuenta(modelo);
+            cuentasService.modificarCuentasPorId(modelo);
         }
         catch (Exception ex) {
             return BadRequest(ex.Message);
@@ -77,9 +77,9 @@ public class CuentasController : Controller
     //
     
     
-    //Eliminar cuenta
+    //Eliminar cuentas
     //
-    [HttpDelete("{id}")]
+    [HttpDelete("EliminarCuentaPorId{id}")]
     public IActionResult EliminarCuentaPorId(int id)
     {
         return Ok(cuentasService.EliminarCuentaPorId(id));

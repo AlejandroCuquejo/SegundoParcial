@@ -16,39 +16,43 @@ public class CiudadController : ControllerBase {
         servicio = new CiudadService(connectionString);
     }
     
-    //Mostrar ciudad
     
     //Mostra todas las ciudades
     //
-    [HttpGet]
+    [HttpGet("obtenerTodasLasCiudad")]
     public IActionResult obtenerTodasLasCiudad()
     {
         return Ok(servicio.obtenerTodasLasCiudad());
     }
     //
     
-    [HttpGet("por-parametro")]
-    public IActionResult ObtenerCiudadAccion2([FromQuery] int id) {
-        var ciudad = servicio.obtenerCiudad(id);
+
+    //Mostrar ciudad por ID
+    //
+    [HttpGet("obtenerCiudadPorId")]
+    public IActionResult obtenerCiudadPorId([FromQuery] int id) {
+        var ciudad = servicio.obtenerCiudadPorId(id);
         return Ok(ciudad);
     }
+    //
+    
     
     //Agregar ciudad
-
-    [HttpPost]
-   /*/
-    public IActionResult InsertarCiudadAccion([FromBody] Infraestructura.Modelos.CiudadModel ciudad) {
-        servicio.insertarCiudad(ciudad);
+    //
+    [HttpPost("RegistrarCiudad")]
+    public IActionResult RegistrarCiudad([FromBody] Infraestructura.Modelos.CiudadModel ciudad) {
+        servicio.RegistrarCiudad(ciudad);
         return Created("Se creo con exito", ciudad);
     }
-    /*/
+    //
+    
     
     //Modificar ciudad
-    
-    [HttpPut]
-    public IActionResult ModificarCiudadAccion([FromBody] Infraestructura.Modelos.CiudadModel ciudad) {
+    //
+    [HttpPut("modificarCiudadPorID")]
+    public IActionResult modificarCiudadPorID([FromBody] Infraestructura.Modelos.CiudadModel ciudad) {
         try {
-            servicio.modificarCiudad(ciudad);
+            servicio.modificarCiudadPorID(ciudad);
         }
         catch (Exception ex) {
             return BadRequest(ex.Message);
@@ -56,10 +60,12 @@ public class CiudadController : ControllerBase {
         }
         return Ok("se actualizo con exito");
     }
-    
-    //Eliminar Persona
     //
-    [HttpDelete("{id}")]
+    
+    
+    //Eliminar ciudad
+    //
+    [HttpDelete("EliminarCiudadPorId{id}")]
     public IActionResult EliminarCiudadPorId(int id)
     {
         return Ok(servicio.EliminarCiudadPorId(id));

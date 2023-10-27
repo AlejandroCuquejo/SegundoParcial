@@ -55,7 +55,7 @@ public class PersonaDatos
             var comando = new Npgsql.NpgsqlCommand($"SELECT c.*, p.* " +
                                                    $"FROM ciudad c " +
                                                    $"INNER JOIN persona p ON p.id_ciudad = c.id_ciudad " +
-                                                   $"where p.id_persona = '{id}'", conn);
+                                                   $"WHERE p.id_persona = '{id}'", conn);
             using var reader = comando.ExecuteReader();
             if (reader.Read())
             {
@@ -81,7 +81,7 @@ public class PersonaDatos
             return null;
         }
       
-      public void insertarPersona(PersonaModel persona)
+      public void RegistrarPersona(PersonaModel persona)
       {
           var conn = conexion.GetConexion();
           var comando = new Npgsql.NpgsqlCommand("INSERT INTO public.persona (nombre, apellido, nro_documento, direccion, email, celular, estado, id_ciudad) " +
@@ -99,9 +99,8 @@ public class PersonaDatos
 
           comando.ExecuteNonQuery();
       }
-      /*/
-      /*/
-      public void modificarPersona(PersonaModel persona) {
+
+      public void modificarPersonaPorId(PersonaModel persona) {
           var conn = conexion.GetConexion();
           var comando = new Npgsql.NpgsqlCommand($"UPDATE persona " +
                                                  $"SET nombre = '{persona.nombre}', " +
@@ -110,14 +109,14 @@ public class PersonaDatos
                                                  $"direccion = '{persona.direccion}', " +
                                                  $"email = '{persona.email}', " +
                                                  $"celular = '{persona.celular}', " +
-                                                 $"estado = '{persona.estado}', " + // Agregando comillas
+                                                 $"estado = '{persona.estado}', " + 
                                                  $"id_ciudad = {persona.ciudad.id_ciudad} " +
                                                  $"WHERE id_persona = {persona.id_persona}", conn);
 
           comando.ExecuteNonQuery();
       }
       
-      public CiudadModel EliminarPersnaPorId(int id) {
+      public CiudadModel EliminarPersonaPorId(int id) {
           var conn = conexion.GetConexion();
           var comando = new Npgsql.NpgsqlCommand($"DELETE FROM persona WHERE id_persona = {id}", conn);
           using var reader = comando.ExecuteReader();

@@ -1,6 +1,6 @@
 namespace Optativo_Api.Models;
 
-public class PersonaModel
+public class PersonaModels
 {
     public int id_persona { get; set; }
     
